@@ -44,8 +44,6 @@ describe ('model', function () {
 
       var model2 = new Model();
 
-      console.dir(model1.onDataStoreEventName, model2.onDataStoreEventName);
-
       model1.on(model1.onDataStoreEventName, function (storage) {
         storage.should.have.property('1');
         storage.should.not.have.property('2');
