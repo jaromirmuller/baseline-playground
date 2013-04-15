@@ -6,9 +6,14 @@ var Model = function () {
   events.EventEmitter.call(this);
 
   /**
+   * it allows us to emit custom event name, therefore we can define it per each model instance
+   */
+  this.onDataStoreEventName = 'dataStored';
+
+  /**
    * local data storage
    */
-  this. storage = {};
+  this.storage = {};
 
   /**
    * this is public function 
@@ -16,7 +21,7 @@ var Model = function () {
   this.storeData = function ( id, data ) {
 
     this.storage[id] = data;
-    this.emit("dataStored", this.storage);
+    this.emit(this.onDataStoreEventName, this.storage);
 
     return this.storage;
 
